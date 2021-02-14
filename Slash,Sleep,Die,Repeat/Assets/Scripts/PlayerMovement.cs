@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer playerRenderer;
     [SerializeField] List<Sprite> playerSprites;
     Rigidbody2D rb;
-    public float speed;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float speed = Player.instance.GetStats().GetMovespeed();
         if (Input.GetKey(KeyCode.W))
         {
             playerRenderer.sprite = playerSprites[0];

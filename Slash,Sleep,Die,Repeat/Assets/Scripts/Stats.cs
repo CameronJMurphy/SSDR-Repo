@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+    public Stats(int h, int ms, float mod)
+    {
+        health = h;
+        movespeed = ms;
+        magicCooldownMod = mod;
+
+        baseHealth = h;
+        baseMovespeed = ms;
+        baseMagicCooldownMod = mod;
+    }
+    int baseHealth, baseMovespeed; 
+    float baseMagicCooldownMod;
     int health;
     int movespeed;
     float magicCooldownMod;
@@ -17,8 +29,31 @@ public class Stats : MonoBehaviour
     public int GetMovespeed() { return movespeed; }
     public float GetMagicCooldownMod() { return magicCooldownMod; }
 
-    public void ApplyBuild(Build build)
+    void ResetStats()
 	{
-
+        health = baseHealth;
+        movespeed = baseMovespeed;
+        magicCooldownMod = baseMagicCooldownMod;
+	}
+    public bool ApplyBuild()
+	{
+        try //attempt to apply the effects of all the items to the stats of the player
+        {
+            Build playerBuild = Player.instance.GetBuild();
+            Armour armour = playerBuild.GetArmour();
+            Artifact artifact = playerBuild.GetArtifact();
+            Weapon weapon = playerBuild.GetWeapon();
+            ResetStats();
+            health += armour.HealthMod() + artifact.HealthMod() + weapon.HealthMod();
+            movespeed += armour.MovespeedMod() + artifact.MovespeedMod();
+            magicCooldownMod += artifact.MagicCooldownMod();
+            PlayerUI.instance.UpdatePlayerHealthText();
+            Debug.Log("health: " + health + " Movespeed: " + movespeed + " Magic Cooldown Mod: " + magicCooldownMod + " Spell: " + playerBuild.GetSpell().GetType());
+            return true;
+        }
+        catch
+		{
+            return false;
+		}
 	}
 }

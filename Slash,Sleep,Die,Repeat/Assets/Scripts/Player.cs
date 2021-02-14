@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     Stats stats;
     Build build;
 	static public Player instance;
+	public PlayerMovement playerMovement;
 	//create singleton
 	private void Awake()
 	{
@@ -22,8 +23,9 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
-		stats = new Stats();
+		stats = new Stats(200,150,0);//base: health,movespeed and magicCooldownMod
 		build = new Build();
+		playerMovement = GetComponent<PlayerMovement>();
 	}
 	bool CastSpell()
 	{

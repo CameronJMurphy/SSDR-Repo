@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 322045905}
   - component: {fileID: 322045904}
   - component: {fileID: 322045903}
+  - component: {fileID: 322045907}
   m_Layer: 0
   m_Name: Teleport
   m_TagString: Magic
@@ -413,6 +414,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &322045907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322045901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37866ffd2568f5f44b717402a149a966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &335442227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,7 +1601,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1716728370}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &874985425
 SpriteRenderer:
@@ -1857,7 +1870,7 @@ Transform:
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1716728370}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1047494945
 GameObject:
@@ -2322,7 +2335,7 @@ Transform:
   m_LocalScale: {x: 1.2775764, y: 0.9559219, z: 1}
   m_Children: []
   m_Father: {fileID: 1716728370}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1324238782
 SpriteRenderer:
@@ -3190,9 +3203,9 @@ Transform:
   m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
-  - {fileID: 963194228}
   - {fileID: 1324238781}
   - {fileID: 874985424}
+  - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

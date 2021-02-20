@@ -29,8 +29,17 @@ public class Player : MonoBehaviour
 	}
 	bool CastSpell()
 	{
-		Debug.Log("Casting Spell");
-        return true;
+		if(build.GetSpell().Cast())
+		{
+			Debug.Log("Casting " + build.GetSpell().GetType());
+			return true;
+		}
+		else
+		{
+			Debug.Log("Spell On Cooldown for " + build.GetSpell().GetCooldown() + " seconds");
+			return false;
+		}
+		
 	}
     bool Attack()
 	{

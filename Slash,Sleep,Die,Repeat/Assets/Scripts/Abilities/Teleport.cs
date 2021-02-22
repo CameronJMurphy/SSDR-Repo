@@ -6,7 +6,7 @@ public class Teleport : MonoBehaviour
 {
     public void Cast()
 	{
-		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector3 mousePos = Player.instance.PlayerToMouse();
 		mousePos.z = 0;
 		Player.instance.transform.position = mousePos;
 	}

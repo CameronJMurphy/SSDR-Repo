@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SelectItem : MonoBehaviour
 {
+	SpawnWeapon spawnWeapon;
+	private void Start()
+	{
+		spawnWeapon = FindObjectOfType<SpawnWeapon>();
+	}
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.tag == "Player")
@@ -12,6 +17,7 @@ public class SelectItem : MonoBehaviour
 			{
 				case "Weapon":
 					Player.instance.GetBuild().SetWeapon(GetComponent<Weapon>());
+					spawnWeapon.SpawnChosenWeapon(GetComponent<Weapon>());
 					break;
 				case "Armour":
 					Player.instance.GetBuild().SetArmour(GetComponent<Armour>());
@@ -25,4 +31,6 @@ public class SelectItem : MonoBehaviour
 			}
 		}
 	}
+
+	
 }

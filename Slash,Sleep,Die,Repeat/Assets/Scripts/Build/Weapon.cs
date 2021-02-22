@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour
 	[SerializeField]  Type type;
 	int damage;
 	float cooldown;
+	float timer = 0;
 	public Type GetType() { return type; }
 
 	public int GetDamage() { return damage; }
@@ -39,7 +40,7 @@ public class Weapon : MonoBehaviour
 		{
 			case Type.sword:
 				damage = 10;
-				cooldown = 0.3f;
+				cooldown = 0.1f;
 				break;
 			case Type.spear:
 				damage = 8;
@@ -50,6 +51,32 @@ public class Weapon : MonoBehaviour
 				cooldown = 0.5f;
 				break;
 		}
+	}
+
+	private void Update()
+	{
+		timer -= Time.deltaTime;
+	}
+	public bool Attack()
+	{
+		if (timer < 0)
+		{
+			switch (type)
+			{
+				case Type.sword:
+					timer = cooldown;
+					FindObjectOfType<Sweep>().Use();
+					return true;
+				case Type.spear:
+					FindObjectOfType<Stab>().Use(); timer = cooldown;
+					return true;
+				case Type.magicStaff:
+					timer = cooldown;
+					FindObjectOfType<Missile>().Use();
+					return true;
+			}
+		}
+		return false;
 	}
 
 }

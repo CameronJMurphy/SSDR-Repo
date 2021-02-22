@@ -8,9 +8,10 @@ public class Build : MonoBehaviour
     Armour armour;
     Magic spell;
     Artifact artifact;
+   
 
-   //setters
-    public void SetWeapon(Weapon w) { weapon = w; Debug.Log(weapon.GetType()); }
+	//setters
+	public void SetWeapon(Weapon w) {   weapon = w; Debug.Log(weapon.GetType()); }
     public void SetArmour(Armour a) { armour = a; Debug.Log(armour.GetType()); }
     public void SetSpell(Magic m) { spell = m; Debug.Log(spell.GetType()); }
     public void SetArtifact(Artifact a) { artifact = a; Debug.Log(artifact.GetType()); }

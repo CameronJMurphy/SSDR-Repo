@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
     Stats stats;
     Build build;
 	static public Player instance;
-	public PlayerMovement playerMovement;
+	[HideInInspector] public PlayerMovement playerMovement;
+	[HideInInspector] public bool shielded = false;
 	//create singleton
 	private void Awake()
 	{
@@ -29,26 +30,71 @@ public class Player : MonoBehaviour
 	}
 	bool CastSpell()
 	{
-		if(build.GetSpell().Cast())
+		if (build.GetSpell() != null)
 		{
-			Debug.Log("Casting " + build.GetSpell().GetType());
-			return true;
+			if (build.GetSpell().Cast())
+			{
+				Debug.Log("Casting " + build.GetSpell().GetType());
+				return true;
+			}
+			else
+			{
+				Debug.Log("Spell On Cooldown for " + build.GetSpell().GetTimer() + " seconds");
+				return false;
+			}
 		}
-		else
-		{
-			Debug.Log("Spell On Cooldown for " + build.GetSpell().GetCooldown() + " seconds");
-			return false;
-		}
+		Debug.Log("Spell not selected");
+		return false;	
 		
 	}
     bool Attack()
 	{
-		Debug.Log("Attacking");
-        return true;
+		if (build.GetWeapon() != null)
+		{
+			if (build.GetWeapon().Attack())
+			{
+				Debug.Log("Attacking");
+				return true;
+			}
+			else
+			{
+				Debug.Log("Attack on cooldown");
+				return false;
+			}
+		}
+		Debug.Log("Havent Selected weapon");
+		return false;
 	}
 
+	public void TakeDamage(int amount)
+	{
+		if (!shielded)
+		{
+			GetStats().MinusHealth(amount);
+		}
+		else //being shield halves damage
+		{
+			amount /= 2;
+			GetStats().MinusHealth(amount);
+		}
+	}
 	public Stats GetStats() { return stats; }
 	public Build GetBuild() { return build; }
+
+	public Vector3 PlayerToMouse()
+	{
+		//find direction to fire
+		Vector3 mousePos = Input.mousePosition;
+		mousePos.z = .5f;
+		Ray ray = Camera.main.ScreenPointToRay(mousePos);
+		Plane plane = new Plane(new Vector3(0, 0, -1), 0);
+		float distance = 0;
+		if (plane.Raycast(ray, out distance))
+		{
+			mousePos = ray.GetPoint(distance);
+		}
+		return mousePos;
+	}
 
 	private void Update()
 	{

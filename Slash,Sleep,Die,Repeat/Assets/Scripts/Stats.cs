@@ -34,6 +34,7 @@ public class Stats : MonoBehaviour
         health = baseHealth;
         movespeed = baseMovespeed;
         magicCooldownMod = baseMagicCooldownMod;
+        Player.instance.GetBuild().GetSpell().ResetSpellValues();
 	}
     public bool ApplyBuild()
 	{
@@ -47,8 +48,9 @@ public class Stats : MonoBehaviour
             health += armour.HealthMod() + artifact.HealthMod() + weapon.HealthMod();
             movespeed += armour.MovespeedMod() + artifact.MovespeedMod();
             magicCooldownMod += artifact.MagicCooldownMod();
+            playerBuild.GetSpell().ModifyCooldownMax(magicCooldownMod);
             PlayerUI.instance.UpdatePlayerHealthText();
-            Debug.Log("health: " + health + " Movespeed: " + movespeed + " Magic Cooldown Mod: " + magicCooldownMod + " Spell: " + playerBuild.GetSpell().GetType());
+            Debug.Log("health: " + health + " Movespeed: " + movespeed + " Spell Cooldown: " + playerBuild.GetSpell().GetCooldown() + " Spell: " + playerBuild.GetSpell().GetType());
             return true;
         }
         catch

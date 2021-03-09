@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             playerRenderer.sprite = playerSprites[3];
-            rb.AddForce(new Vector2(1 * speed, 0));
+            rb.AddForce(new Vector2(1 * speed , 0));
         }
     }
 }

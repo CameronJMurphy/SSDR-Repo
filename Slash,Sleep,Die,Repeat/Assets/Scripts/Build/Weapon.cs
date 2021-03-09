@@ -44,7 +44,7 @@ public class Weapon : MonoBehaviour
 				break;
 			case Type.spear:
 				damage = 8;
-				cooldown = 0.4f;
+				cooldown = 0.3f;
 				break;
 			case Type.magicStaff:
 				damage = 6;

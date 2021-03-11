@@ -7,9 +7,12 @@ public class Missile : MonoBehaviour
 	[SerializeField] GameObject projectile;
 	[SerializeField] float force;
 	[SerializeField] float duration;
+	[SerializeField] Transform spawnPos;
+	[SerializeField] AudioSource SFX;
 	public void Use()
 	{
-		GameObject proj = Instantiate(projectile, transform.position,transform.rotation);
+		SFX.Play();
+		GameObject proj = Instantiate(projectile, spawnPos.position, transform.rotation);
 		//find direction to fire
 		Vector3 mousePos = Player.instance.PlayerToMouse();
 		Vector3 directionVec = mousePos - transform.position;

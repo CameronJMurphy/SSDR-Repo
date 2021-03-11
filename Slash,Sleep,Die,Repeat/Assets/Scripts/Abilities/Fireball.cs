@@ -6,12 +6,15 @@ public class Fireball : MonoBehaviour
 {
 	[SerializeField] GameObject fireball;
 	[SerializeField] float force;
+	[SerializeField] Transform spawnPoint;
+	[SerializeField] AudioSource SFX;
 	
 	public void Cast()
 	{
+		SFX.Play();
 		Player player = Player.instance;
 		//instantiate
-		GameObject fb = Instantiate(fireball, player.transform.position, player.transform.rotation);
+		GameObject fb = Instantiate(fireball, spawnPoint.position, spawnPoint.rotation);
 
 		Vector3 mousePos = player.PlayerToMouse(); 
 		

@@ -35,7 +35,7 @@ public class Artifact : MonoBehaviour
 			case Type.giant:
 				return 0;
 			case Type.prayerMantis:
-				return 50;
+				return 100;
 			case Type.sage:
 				return 0;
 

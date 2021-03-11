@@ -6,12 +6,14 @@ public class Sweep : MonoBehaviour
 {
 	[SerializeField] float duration;
 	BoxCollider2D collider;
+	[SerializeField] AudioSource SFX;
 	private void Start()
 	{
 		collider = GetComponent<BoxCollider2D>();
 	}
 	public void Use()
 	{
+		SFX.Play();
 		GetComponent<Animator>().SetBool("Attack", true);
 		collider.isTrigger = false;
 		StartCoroutine(Timer());

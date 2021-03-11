@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4184630385940841290}
   - component: {fileID: 4181378426352976860}
   - component: {fileID: 8225711079896830136}
-  - component: {fileID: -7933424498439195086}
   - component: {fileID: -1625473485407723506}
+  - component: {fileID: 3807290205570747330}
+  - component: {fileID: 7470398288806131524}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -106,32 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &-7933424498439195086
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2586742090653325888}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00000011920929, y: -0.40021074}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000006, y: 0.6740047}
-    oldSize: {x: 1.7, y: 2.3}
-    newSize: {x: 1.7, y: 2.3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.7, y: 2.3}
-  m_EdgeRadius: 0
 --- !u!95 &-1625473485407723506
 Animator:
   serializedVersion: 3
@@ -151,6 +126,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3807290205570747330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586742090653325888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc657fa4fd65294297b2b13179472fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &7470398288806131524
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586742090653325888}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.010112643, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.28815997
 --- !u!1 &9121768128822749386
 GameObject:
   m_ObjectHideFlags: 0

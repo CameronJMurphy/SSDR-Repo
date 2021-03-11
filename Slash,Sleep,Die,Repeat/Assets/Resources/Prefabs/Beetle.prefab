@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2683310220251732172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.163675, y: 7.3842583, z: 59.071697}
+  m_LocalPosition: {x: 11.163675, y: 7.3842583, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42c65c0c4cb4364897633cbff7a0129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 40
 --- !u!50 &2683310220251732168
 Rigidbody2D:
   serializedVersion: 4
@@ -168,3 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  enemyProjectile: {fileID: 1062731707134148908, guid: c24d223574463a745a22b1633c5617d7,
+    type: 3}
+  projectileSpeed: 500
+  attackCooldown: 1

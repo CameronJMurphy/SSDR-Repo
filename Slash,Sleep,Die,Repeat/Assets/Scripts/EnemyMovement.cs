@@ -19,10 +19,15 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+    }
+
+	private void FixedUpdate()
+	{
         Move();
     }
 
-    void Move()
+	void Move()
     {
         if (ZoneCon.instance.activeZone != null && ZoneCon.instance.activeZone.GetComponent<BoxCollider2D>().IsTouching(GetComponent<CircleCollider2D>()))
         {

@@ -21,7 +21,7 @@ public class Stats : MonoBehaviour
     float magicCooldownMod;
     //Setters
     public void AddHealth(int amount) { health += amount; }
-    public void MinusHealth(int amount) { health -= amount; }
+    public void MinusHealth(int amount) { health -= amount; PlayerUI.instance.UpdatePlayerHealthText(); }
     public void AddMovespeed(int amount) { movespeed += amount; }
     public void SetMagicCooldownMod(float amount) { magicCooldownMod = amount; }
     //Getters

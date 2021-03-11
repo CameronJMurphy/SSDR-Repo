@@ -8,6 +8,10 @@ TagManager:
   - Armour
   - Magic
   - Artifact
+  - Barrier
+  - Zone
+  - EnemyHurtAudio
+  - FireballHit
   layers:
   - Default
   - TransparentFX

@@ -34,9 +34,9 @@ public class Armour : MonoBehaviour
 			case Type.cloth:
 				return 50;
 			case Type.scalemail:
-				return -25;
-			case Type.platemail:
 				return -50;
+			case Type.platemail:
+				return -100;
 		}
 		return 0;
 	}

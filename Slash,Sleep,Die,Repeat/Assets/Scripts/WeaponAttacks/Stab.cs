@@ -5,16 +5,20 @@ using UnityEngine;
 public class Stab : MonoBehaviour
 {
 	[SerializeField] float duration;
+	[SerializeField] AudioSource SFX;
 
-	BoxCollider2D collider;
+	bool attacking = false;
+	PolygonCollider2D collider;
 	private void Start()
 	{
-		collider = GetComponent<BoxCollider2D>();
+		collider = GetComponent<PolygonCollider2D>();
 	}
 	public void Use()
 	{
+		SFX.Play();
 		GetComponent<Animator>().SetBool("Attack", true);
-		collider.isTrigger = false;
+		//collider.isTrigger = false;
+		attacking = true;
 		StartCoroutine(Timer());
 	}
 
@@ -22,7 +26,7 @@ public class Stab : MonoBehaviour
 	{
 		yield return new WaitForSeconds(duration);
 		GetComponent<Animator>().SetBool("Attack", false);
-		collider.isTrigger = true;
+		//collider.isTrigger = true;		
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -31,6 +35,16 @@ public class Stab : MonoBehaviour
 		{
 			int damage = Player.instance.GetBuild().GetWeapon().GetDamage();
 			collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+		}
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (collision.gameObject.GetComponent<Enemy>() != null && attacking == true)
+		{
+			int damage = Player.instance.GetBuild().GetWeapon().GetDamage();
+			collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+			attacking = false;
 		}
 	}
 }

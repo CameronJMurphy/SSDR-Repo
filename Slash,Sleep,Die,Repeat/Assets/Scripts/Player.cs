@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Player : MonoBehaviour
 	static public Player instance;
 	[HideInInspector] public PlayerMovement playerMovement;
 	[HideInInspector] public bool shielded = false;
+	[SerializeField] int baseMoveSpeed;
+	[SerializeField] int baseHealth;
+	[SerializeField] int magicCDMod;
 	//create singleton
 	private void Awake()
 	{
@@ -24,7 +28,7 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
-		stats = new Stats(200,150,0);//base: health,movespeed and magicCooldownMod
+		stats = new Stats(baseHealth, baseMoveSpeed, magicCDMod);//base: health,movespeed and magicCooldownMod
 		build = new Build();
 		playerMovement = GetComponent<PlayerMovement>();
 	}
@@ -71,11 +75,19 @@ public class Player : MonoBehaviour
 		if (!shielded)
 		{
 			GetStats().MinusHealth(amount);
+			CheckDeath();
 		}
-		else //being shield halves damage
+		else //being shielded removes damage
 		{
-			amount /= 2;
-			GetStats().MinusHealth(amount);
+
+		}
+	}
+
+	void CheckDeath()
+	{
+		if(GetStats().GetHealth() < 1)
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 	}
 	public Stats GetStats() { return stats; }

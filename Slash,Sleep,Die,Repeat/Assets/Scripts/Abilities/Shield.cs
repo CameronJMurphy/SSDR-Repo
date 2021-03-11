@@ -6,8 +6,10 @@ public class Shield : MonoBehaviour
 {
 	[SerializeField] float duration;
 	[SerializeField] GameObject shieldedEffect;
+	[SerializeField] AudioSource SFX;
 	public void Cast()
 	{
+		SFX.Play();
 		Player.instance.shielded = true;
 		shieldedEffect.SetActive(true);
 		StartCoroutine(ShieldTimer());

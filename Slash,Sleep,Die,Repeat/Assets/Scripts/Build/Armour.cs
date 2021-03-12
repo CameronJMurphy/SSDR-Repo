@@ -7,9 +7,9 @@ public class Armour : MonoBehaviour
 {
 	public enum Type
 	{
-		cloth,
-		scalemail,
-		platemail
+		robe,
+		trollHide,
+		dragonScale
 	}
 	[SerializeField]Type type;
 	public Type GetType() { return type; }
@@ -18,12 +18,12 @@ public class Armour : MonoBehaviour
 	{
 		switch (type)
 		{
-			case Type.cloth:
-				return -25;
-			case Type.scalemail:
-				return 50;
-			case Type.platemail:
-				return 100;
+			case Type.robe:
+				return -50;
+			case Type.trollHide:
+				return +200;
+			case Type.dragonScale:
+				return +300;
 		}
 		return 0;
 	}
@@ -31,12 +31,12 @@ public class Armour : MonoBehaviour
 	{
 		switch (type)
 		{
-			case Type.cloth:
-				return 50;
-			case Type.scalemail:
-				return -50;
-			case Type.platemail:
-				return -100;
+			case Type.robe:
+				return +300;
+			case Type.trollHide:
+				return 0;
+			case Type.dragonScale:
+				return -200;
 		}
 		return 0;
 	}

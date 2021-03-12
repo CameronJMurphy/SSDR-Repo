@@ -6,31 +6,32 @@ public class SpawnArmour : MonoBehaviour
 {
     Player player;
     [SerializeField] Color clothColour;
+    [SerializeField] Color trollColour;
     [SerializeField] Color scaleColour;
-    [SerializeField] Color plateColour;
+    RuntimeAnimatorController ac;
     // Start is called before the first frame update
     void Start()
     {
         player = Player.instance;
+        ac = player.GetComponent<RuntimeAnimatorController>();
     }
 
     public void Spawn()
     {
+        player.GetComponent<RuntimeAnimatorController>().Equals(null);
         switch (player.GetBuild().GetArmour().GetType())
-        {
+        { 
             
-            case Armour.Type.cloth:
+            case Armour.Type.robe:
                 player.GetComponent<SpriteRenderer>().color = clothColour;
                 break;
-            case Armour.Type.scalemail:
+            case Armour.Type.trollHide:
+                player.GetComponent<SpriteRenderer>().color = trollColour;
+                break;
+            case Armour.Type.dragonScale:
                 player.GetComponent<SpriteRenderer>().color = scaleColour;
                 break;
-            case Armour.Type.platemail:
-                player.GetComponent<SpriteRenderer>().color = plateColour;
-                break;
         }
-        
-        
-
-	}
+        player.GetComponent<RuntimeAnimatorController>().Equals(ac);
+    }
 }

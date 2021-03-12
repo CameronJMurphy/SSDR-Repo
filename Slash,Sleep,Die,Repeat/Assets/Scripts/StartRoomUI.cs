@@ -16,15 +16,17 @@ public class StartRoomUI : MonoBehaviour
     public void DisplayWeaponText(bool answer)
 	{
         weaponText.gameObject.SetActive(answer);
-        weaponText.text = Player.instance.GetBuild().GetWeapon().GetType().ToString() + ": +" + Player.instance.GetBuild().GetWeapon().HealthMod() + " hp";
+        weaponText.text = Player.instance.GetBuild().GetWeapon().GetType().ToString() + ": " + 
+                          Player.instance.GetBuild().GetWeapon().HealthMod() + " hp" +
+                          " & " + Player.instance.GetBuild().GetWeapon().MovespeedMod() + " ms";
     }
 
     public void DisplayArmourText(bool answer)
 	{
         armourText.gameObject.SetActive(answer);
         armourText.text = Player.instance.GetBuild().GetArmour().GetType().ToString() +
-                          ": +" + Player.instance.GetBuild().GetArmour().HealthMod() + " hp" +
-                          " & +" + Player.instance.GetBuild().GetArmour().MovespeedMod() + " ms";
+                          ": " + Player.instance.GetBuild().GetArmour().HealthMod() + " hp" +
+                          " & " + Player.instance.GetBuild().GetArmour().MovespeedMod() + " ms";
                             
     }
 
@@ -32,8 +34,8 @@ public class StartRoomUI : MonoBehaviour
 	{
         artifactText.gameObject.SetActive(answer);
         artifactText.text = Player.instance.GetBuild().GetArtifact().GetType().ToString() +
-                            ": +" + Player.instance.GetBuild().GetArtifact().HealthMod() + " hp" +
-                            " & +" + Player.instance.GetBuild().GetArtifact().MovespeedMod() + " ms" +
+                            ": " + Player.instance.GetBuild().GetArtifact().HealthMod() + " hp" +
+                            " & " + Player.instance.GetBuild().GetArtifact().MovespeedMod() + " ms" +
                             " & " + Player.instance.GetBuild().GetArtifact().MagicCooldownMod() + " cd mod";
 
     }

@@ -34,11 +34,11 @@ public class Win : MonoBehaviour
 		{
 			Achievement.text = "Achievement: Pacifist";
 		}
-		else if (killCount < amountOfEnemies / 3)
+		else if (killCount < amountOfEnemies / 4)
 		{
 			Achievement.text = "Achievement: Coward";
 		}
-		else if (killCount < amountOfEnemies / 2.8)
+		else if (killCount < amountOfEnemies / 3)
 		{
 			Achievement.text = "Achievement: Weakling";
 		}
@@ -46,11 +46,11 @@ public class Win : MonoBehaviour
 		{
 			Achievement.text = "Achievement: Mediocre";
 		}
-		else if (killCount < amountOfEnemies / 1.8)
+		else if (killCount < amountOfEnemies / 1.5)
 		{
 			Achievement.text = "Achievement: Slayer";
 		}
-		else if (killCount < amountOfEnemies / 1.4)
+		else if (killCount < amountOfEnemies / 1.2)
 		{
 			Achievement.text = "Achievement: Godlike";
 		}

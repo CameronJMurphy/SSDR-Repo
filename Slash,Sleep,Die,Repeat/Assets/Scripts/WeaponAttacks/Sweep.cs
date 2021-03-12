@@ -4,34 +4,36 @@ using UnityEngine;
 
 public class Sweep : MonoBehaviour
 {
-	[SerializeField] float duration;
-	BoxCollider2D collider;
 	[SerializeField] AudioSource SFX;
+	bool attacking = false;
+	Animator animator;
+
 	private void Start()
 	{
-		collider = GetComponent<BoxCollider2D>();
+		animator = GetComponent<Animator>();
 	}
 	public void Use()
 	{
 		SFX.Play();
-		GetComponent<Animator>().SetBool("Attack", true);
-		collider.isTrigger = false;
-		StartCoroutine(Timer());
+		animator.SetTrigger("Attack");
+		attacking = true;
 	}
 
-	IEnumerator Timer()
+	private void Update()
 	{
-		yield return new WaitForSeconds(duration);
-		GetComponent<Animator>().SetBool("Attack", false);
-		collider.isTrigger = true; //so it doesnt collide into walls while walking around
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
+		{
+			attacking = false;
+		}
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if (collision.gameObject.GetComponent<Enemy>() != null)
+		if (collision.gameObject.GetComponent<Enemy>() != null && attacking == true)
 		{
 			int damage = Player.instance.GetBuild().GetWeapon().GetDamage();
 			collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+			attacking = false;
 		}
 	}
 }

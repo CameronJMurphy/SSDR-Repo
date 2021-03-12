@@ -20,11 +20,11 @@ public class Artifact : MonoBehaviour
 		switch (type)
 		{
 			case Type.giant:
-				return 50;
+				return +200;
 			case Type.prayingMantis:
-				return 0;
+				return +0;
 			case Type.sage:
-				return 0;
+				return +0;
 		}
 		return 0;
 	}
@@ -33,11 +33,11 @@ public class Artifact : MonoBehaviour
 		switch (type)
 		{
 			case Type.giant:
-				return 0;
+				return +0;
 			case Type.prayingMantis:
-				return 100;
+				return +300;
 			case Type.sage:
-				return 0;
+				return +0;
 
 		}
 		return 0;
@@ -47,28 +47,14 @@ public class Artifact : MonoBehaviour
 		switch (type)
 		{
 			case Type.giant:
-				return 0;
+				return +0;
 			case Type.prayingMantis:
-				return 0;
+				return +0;
 			case Type.sage:
-				return -5;
+				return -7;
 
 		}
 		return 0;
 	}
 
-	public float SizeMod()
-	{
-		switch (type)
-		{
-			case Type.giant:
-				return 0.25f;
-			case Type.prayingMantis:
-				return -0.25f;
-			case Type.sage:
-				return 0;
-
-		}
-		return 0;
-	}
 }

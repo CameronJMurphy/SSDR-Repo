@@ -46,7 +46,7 @@ public class Stats : MonoBehaviour
             Weapon weapon = playerBuild.GetWeapon();
             ResetStats();
             health += armour.HealthMod() + artifact.HealthMod() + weapon.HealthMod();
-            movespeed += armour.MovespeedMod() + artifact.MovespeedMod();
+            movespeed += armour.MovespeedMod() + artifact.MovespeedMod() + weapon.MovespeedMod();
             magicCooldownMod += artifact.MagicCooldownMod();
             playerBuild.GetSpell().ModifyCooldownMax(magicCooldownMod);
             PlayerUI.instance.UpdatePlayerHealthText();

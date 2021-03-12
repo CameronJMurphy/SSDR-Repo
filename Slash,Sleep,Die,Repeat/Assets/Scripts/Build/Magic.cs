@@ -39,11 +39,11 @@ public class Magic : MonoBehaviour
 				break;
 			case Type.teleport:
 				damage = 0;
-				cooldown = 20;
+				cooldown = 12;
 				break;
 			case Type.shield:
 				damage = 0;
-				cooldown = 30;
+				cooldown = 20;
 				break;
 		}
 	}

@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 	[SerializeField] int magicCDMod;
 	[SerializeField] AudioSource hurtSFX;
 	[SerializeField] AudioSource playerDeathMusic;
+
+	Animator playerAni;
 	//create singleton
 	private void Awake()
 	{
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
 		stats = new Stats(baseHealth, baseMoveSpeed, magicCDMod);//base: health,movespeed and magicCooldownMod
 		build = new Build();
 		playerMovement = GetComponent<PlayerMovement>();
+		playerAni = GetComponent<Animator>();
 	}
 	bool CastSpell()
 	{
@@ -77,6 +80,7 @@ public class Player : MonoBehaviour
 		if (!shielded)
 		{
 			hurtSFX.Play();
+			playerAni.SetTrigger("Hurt");
 			GetStats().MinusHealth(amount);
 			CheckDeath();
 		}

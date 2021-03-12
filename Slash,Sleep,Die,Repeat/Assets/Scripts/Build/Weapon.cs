@@ -25,11 +25,24 @@ public class Weapon : MonoBehaviour
 		switch (type)
 		{
 			case Type.sword:
-				return 50;
+				return +100;
 			case Type.spear:
-				return 0;
+				return +0;
 			case Type.magicStaff:
 				return -50;
+		}
+		return 0;
+	}
+	public int MovespeedMod()
+	{
+		switch (type)
+		{
+			case Type.sword:
+				return +0;
+			case Type.spear:
+				return +100;
+			case Type.magicStaff:
+				return +0;
 		}
 		return 0;
 	}

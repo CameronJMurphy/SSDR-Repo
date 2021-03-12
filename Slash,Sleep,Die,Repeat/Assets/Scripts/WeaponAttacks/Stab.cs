@@ -4,37 +4,28 @@ using UnityEngine;
 
 public class Stab : MonoBehaviour
 {
-	[SerializeField] float duration;
 	[SerializeField] AudioSource SFX;
 
 	bool attacking = false;
-	PolygonCollider2D collider;
+	Animator animator;
+
 	private void Start()
 	{
-		collider = GetComponent<PolygonCollider2D>();
+		animator = GetComponent<Animator>();
 	}
+
 	public void Use()
 	{
 		SFX.Play();
-		GetComponent<Animator>().SetBool("Attack", true);
-		//collider.isTrigger = false;
+		GetComponent<Animator>().SetTrigger("Attack");
 		attacking = true;
-		StartCoroutine(Timer());
 	}
 
-	IEnumerator Timer()
+	private void Update()
 	{
-		yield return new WaitForSeconds(duration);
-		GetComponent<Animator>().SetBool("Attack", false);
-		//collider.isTrigger = true;		
-	}
-
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if(collision.gameObject.GetComponent<Enemy>() != null)
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName("SpearAttack"))
 		{
-			int damage = Player.instance.GetBuild().GetWeapon().GetDamage();
-			collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+			attacking = false;
 		}
 	}
 

@@ -9,6 +9,7 @@ public class Win : MonoBehaviour
 	public TextMeshProUGUI Achievement;
 	int killCount = 0;
 	public static Win instance;
+	int amountOfEnemies;
 
 	private void Awake()
 	{
@@ -20,6 +21,7 @@ public class Win : MonoBehaviour
 		{
 			Destroy(this);
 		}
+		amountOfEnemies = FindObjectsOfType<Enemy>().Length;
 	}
 
 	//pause game and brign up end screen canvas
@@ -32,27 +34,27 @@ public class Win : MonoBehaviour
 		{
 			Achievement.text = "Achievement: Pacifist";
 		}
-		else if (killCount < 5)
+		else if (killCount < amountOfEnemies / 3)
 		{
 			Achievement.text = "Achievement: Coward";
 		}
-		else if (killCount < 10)
+		else if (killCount < amountOfEnemies / 2.8)
 		{
 			Achievement.text = "Achievement: Weakling";
 		}
-		else if (killCount < 20)
+		else if (killCount < amountOfEnemies / 2)
 		{
 			Achievement.text = "Achievement: Mediocre";
 		}
-		else if (killCount < 30)
+		else if (killCount < amountOfEnemies / 1.8)
 		{
 			Achievement.text = "Achievement: Slayer";
 		}
-		else if (killCount < 38)
+		else if (killCount < amountOfEnemies / 1.4)
 		{
 			Achievement.text = "Achievement: Godlike";
 		}
-		else if (killCount == 38)
+		else if (killCount == amountOfEnemies)
 		{
 			Achievement.text = "Achievement: Genocide";
 		}

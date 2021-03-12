@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 	[SerializeField] int baseMoveSpeed;
 	[SerializeField] int baseHealth;
 	[SerializeField] int magicCDMod;
+	[SerializeField] AudioSource hurtSFX;
+	[SerializeField] AudioSource playerDeathMusic;
 	//create singleton
 	private void Awake()
 	{
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
 	{
 		if (!shielded)
 		{
+			hurtSFX.Play();
 			GetStats().MinusHealth(amount);
 			CheckDeath();
 		}
@@ -88,6 +91,7 @@ public class Player : MonoBehaviour
 		if(GetStats().GetHealth() < 1)
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			playerDeathMusic.Play();
 		}
 	}
 	public Stats GetStats() { return stats; }

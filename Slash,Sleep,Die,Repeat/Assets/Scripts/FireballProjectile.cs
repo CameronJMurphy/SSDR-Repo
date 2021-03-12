@@ -19,6 +19,8 @@ public class FireballProjectile : MonoBehaviour
 		}
 		//dont destroy the fireball if you hit the player, invisible barriers or your own weapon
 		if(collision.gameObject.GetComponent<Player>() == null 
+		&& collision.gameObject.GetComponent<EnemyProjectile>() == null
+		&& collision.gameObject.GetComponent<PlayerProjectile>() == null
 		&& collision.gameObject.tag != "Barrier" 
 		&& collision.gameObject.tag != "Zone"
 		&& collision.gameObject.tag != "Weapon")

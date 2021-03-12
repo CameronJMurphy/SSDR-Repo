@@ -25,7 +25,7 @@ public class SpawnArtifact : MonoBehaviour
                 giant.gameObject.SetActive(false);
 
                 break;
-            case Artifact.Type.prayerMantis:
+            case Artifact.Type.prayingMantis:
                 prayingMantis.gameObject.SetActive(true);
                 sage.gameObject.SetActive(false);
                 giant.gameObject.SetActive(false);

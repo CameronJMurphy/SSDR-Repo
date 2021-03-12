@@ -12,6 +12,8 @@ TagManager:
   - Zone
   - EnemyHurtAudio
   - FireballHit
+  - EnemyProjectileAudio
+  - EnemyGrowlAudio
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Zones
+  - Enemy
   - 
   - 
   - 

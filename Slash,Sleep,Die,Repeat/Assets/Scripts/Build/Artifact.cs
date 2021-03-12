@@ -9,7 +9,7 @@ public class Artifact : MonoBehaviour
 	public enum Type
 	{
 		giant,
-		prayerMantis,
+		prayingMantis,
 		sage
 	}
 	[SerializeField]Type type;
@@ -21,7 +21,7 @@ public class Artifact : MonoBehaviour
 		{
 			case Type.giant:
 				return 50;
-			case Type.prayerMantis:
+			case Type.prayingMantis:
 				return 0;
 			case Type.sage:
 				return 0;
@@ -34,7 +34,7 @@ public class Artifact : MonoBehaviour
 		{
 			case Type.giant:
 				return 0;
-			case Type.prayerMantis:
+			case Type.prayingMantis:
 				return 100;
 			case Type.sage:
 				return 0;
@@ -48,7 +48,7 @@ public class Artifact : MonoBehaviour
 		{
 			case Type.giant:
 				return 0;
-			case Type.prayerMantis:
+			case Type.prayingMantis:
 				return 0;
 			case Type.sage:
 				return -5;
@@ -63,7 +63,7 @@ public class Artifact : MonoBehaviour
 		{
 			case Type.giant:
 				return 0.25f;
-			case Type.prayerMantis:
+			case Type.prayingMantis:
 				return -0.25f;
 			case Type.sage:
 				return 0;

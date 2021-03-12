@@ -14,6 +14,7 @@ public class EnemyProjectile : MonoBehaviour
 		}
 		if (collision.gameObject.GetComponent<Enemy>() == null
 			&& collision.gameObject.GetComponent<EnemyProjectile>() == null
+			&& collision.gameObject.GetComponent<PlayerProjectile>() == null
 			&& collision.gameObject.tag != "Barrier"
 			&& collision.gameObject.tag != "Zone"
 			&& collision.gameObject.tag != "Weapon")

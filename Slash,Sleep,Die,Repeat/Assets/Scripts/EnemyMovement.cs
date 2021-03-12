@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     Rigidbody2D rb;
     public float speed;
     Vector2 spawn;
+    [SerializeField] LayerMask mask;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,40 +40,63 @@ public class EnemyMovement : MonoBehaviour
         }
 
 
-        //      //raycast to player
-        //      Vector2 direction = player.transform.position - transform.position;
-        //      RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction , 100);
-        //      if (hit)
-        //{
-        //          if(hit.collider.GetComponent<Player>())
-        //	{
-        //              PointToMoveTowards(player.transform.position);
-        //	}
-        //          else
-        //	{
-        //              Vector2 directionDown = player.transform.position - transform.position;
-        //              directionDown.y -= 50;
-        //              RaycastHit2D hit2 = Physics2D.Raycast((Vector2)transform.position, directionDown);
-        //              if (hit2)
-        //              {
-        //                  PointToMoveTowards(player.transform.position);
-        //              }
-        //          }
-        //}
-        //if intersect with not a player
-        //raycast to shorter side
-        //raycast again and move 
-        //else
-        //move to player
-    }
+		
+		//if intersect with not a player
+		//raycast to shorter side
+		//raycast again and move 
+		//else
+		//move to player
+	}
 
     void ChasePlayer()
     {
+        //Vector2 direction = player.transform.position - transform.position;
+        //direction.Normalize();
+        //rb.AddForce(direction * speed);
+        //transform.up = (Vector2)player.transform.position - (Vector2)transform.position;
+
+
+        //raycast to player
         Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
-        rb.AddForce(direction * speed);
-        transform.up = (Vector2)player.transform.position - (Vector2)transform.position;
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction, 10000, mask);
+        if (hit)
+        {
+            if (hit.collider.GetComponent<Player>())
+            {
+                direction.Normalize();
+                rb.AddForce(direction * speed);
+                transform.up = (Vector2)player.transform.position - (Vector2)transform.position;
+            }
+            else
+            {
+                Vector2 tempDirection = direction;
+                tempDirection.x = direction.y;
+                tempDirection.y = -direction.x;
+          
+                tempDirection.Normalize();
+                rb.AddForce(tempDirection * speed);
+                transform.up = (Vector2)player.transform.position - (Vector2)transform.position;
+                //NewDirection(10, hit.collider);
+            }
+        }
     }
+    //navigates around objects downwards
+ //   void NewDirection(int amount, Collider2D collider)
+	//{
+ //       Vector2 directionDown = player.transform.position - transform.position;
+ //       directionDown.y -= amount;
+ //       RaycastHit2D hit2 = Physics2D.Raycast((Vector2)transform.position, directionDown);
+ //       if (hit2.collider != collider)
+ //       {
+ //           directionDown.Normalize();
+ //           rb.AddForce(directionDown * speed);
+ //           transform.up = (Vector2)player.transform.position - (Vector2)transform.position;
+ //       }
+ //       else
+	//	{
+ //           NewDirection(10,collider);
+	//	}
+ //   }
     void GoToSpawn()
     {
         if (Mathf.Abs(transform.position.x - spawn.x) > 0.1f ||

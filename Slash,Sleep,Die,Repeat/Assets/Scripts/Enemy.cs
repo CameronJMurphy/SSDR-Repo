@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
 	float attackTimer = 0;
 
 	AudioSource hurtAudio;
+	AudioSource attackSFX;
+	AudioSource growlSFX;
+
 	Animator aniCon;
 	float aniCooldown = 0.5f;
 	float aniTimer = 0;
@@ -21,6 +24,8 @@ public class Enemy : MonoBehaviour
 	{
 		aniCon = GetComponent<Animator>();
 		hurtAudio = GameObject.FindGameObjectWithTag("EnemyHurtAudio").GetComponent<AudioSource>();
+		attackSFX = GameObject.FindGameObjectWithTag("EnemyProjectileAudio").GetComponent<AudioSource>();
+		growlSFX = GameObject.FindGameObjectWithTag("EnemyGrowlAudio").GetComponent<AudioSource>();
 	}
 
 	public void TakeDamage(int amount)
@@ -54,6 +59,10 @@ public class Enemy : MonoBehaviour
 		//attack the player when he is in your zone
 		if (ZoneCon.instance.activeZone != null && ZoneCon.instance.activeZone.GetComponent<BoxCollider2D>().IsTouching(GetComponent<CircleCollider2D>()))
 		{
+			if (growlSFX.isPlaying == false)
+			{
+				growlSFX.Play();
+			}
 			attackTimer += Time.deltaTime;
 			if (attackTimer > attackCooldown)
 			{
@@ -65,6 +74,7 @@ public class Enemy : MonoBehaviour
 
 	void Attack()
 	{
+		//attackSFX.Play();
 		GameObject proj = Instantiate(enemyProjectile,transform.position, transform.rotation);
 		Vector3 direction = Player.instance.transform.position - transform.position;
 		direction.Normalize();

@@ -28553,7 +28553,7 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   shielded: 0
   baseMoveSpeed: 800
-  baseHealth: 200
+  baseHealth: 20000
   magicCDMod: 0
   hurtSFX: {fileID: 1453623431}
   playerDeathMusic: {fileID: 1697089903}

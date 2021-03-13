@@ -8,17 +8,20 @@ public class SpawnArmour : MonoBehaviour
     [SerializeField] Color clothColour;
     [SerializeField] Color trollColour;
     [SerializeField] Color scaleColour;
-    RuntimeAnimatorController ac;
+
+    Animator playerAni;
     // Start is called before the first frame update
     void Start()
     {
         player = Player.instance;
-        ac = player.GetComponent<RuntimeAnimatorController>();
+
+        playerAni = player.GetComponent<Animator>();
     }
 
     public void Spawn()
     {
-        player.GetComponent<RuntimeAnimatorController>().Equals(null);
+
+        player.GetComponent<Animator>().Equals(null);
         switch (player.GetBuild().GetArmour().GetType())
         { 
             
@@ -32,6 +35,8 @@ public class SpawnArmour : MonoBehaviour
                 player.GetComponent<SpriteRenderer>().color = scaleColour;
                 break;
         }
-        player.GetComponent<RuntimeAnimatorController>().Equals(ac);
+        player.GetComponent<Animator>().Equals(playerAni);
+
+
     }
 }

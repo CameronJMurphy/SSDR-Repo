@@ -17,7 +17,8 @@ public class EnemyProjectile : MonoBehaviour
 			&& collision.gameObject.GetComponent<PlayerProjectile>() == null
 			&& collision.gameObject.tag != "Barrier"
 			&& collision.gameObject.tag != "Zone"
-			&& collision.gameObject.tag != "Weapon")
+			&& collision.gameObject.tag != "Weapon"
+			&& collision.gameObject.tag != "Floor")
 		{
 			Destroy(gameObject);
 		}

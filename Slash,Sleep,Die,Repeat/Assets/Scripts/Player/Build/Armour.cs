@@ -19,7 +19,7 @@ public class Armour : MonoBehaviour
 		switch (type)
 		{
 			case Type.robe:
-				return -50;
+				return +0;
 			case Type.trollHide:
 				return +200;
 			case Type.dragonScale:
@@ -36,7 +36,7 @@ public class Armour : MonoBehaviour
 			case Type.trollHide:
 				return 0;
 			case Type.dragonScale:
-				return -200;
+				return -100;
 		}
 		return 0;
 	}

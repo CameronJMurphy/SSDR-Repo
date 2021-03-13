@@ -14,6 +14,7 @@ TagManager:
   - FireballHit
   - EnemyProjectileAudio
   - EnemyGrowlAudio
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - 
   - Zones
   - Enemy
-  - 
+  - Floor
   - 
   - 
   - 

@@ -39,22 +39,10 @@ public class EnemyMovement : MonoBehaviour
             GoToSpawn();
         }
 
-
-		
-		//if intersect with not a player
-		//raycast to shorter side
-		//raycast again and move 
-		//else
-		//move to player
 	}
 
     void ChasePlayer()
     {
-        //Vector2 direction = player.transform.position - transform.position;
-        //direction.Normalize();
-        //rb.AddForce(direction * speed);
-        //transform.up = (Vector2)player.transform.position - (Vector2)transform.position;
-
 
         //raycast to player
         Vector2 direction = player.transform.position - transform.position;
@@ -69,34 +57,19 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                Vector2 tempDirection = direction;
-                tempDirection.x = direction.y;
-                tempDirection.y = -direction.x;
-          
-                tempDirection.Normalize();
-                rb.AddForce(tempDirection * speed);
-                transform.up = (Vector2)player.transform.position - (Vector2)transform.position;
-                //NewDirection(10, hit.collider);
+                //move 90 degrees to collision
+                Vector2 tempDirection1 = direction;
+                tempDirection1.x = direction.y;
+                tempDirection1.y = -direction.x;
+
+                tempDirection1.Normalize();
+                rb.AddForce(tempDirection1 * speed);
+                transform.up = (Vector2)player.transform.position - (Vector2)transform.position;                              
+           
             }
         }
     }
-    //navigates around objects downwards
- //   void NewDirection(int amount, Collider2D collider)
-	//{
- //       Vector2 directionDown = player.transform.position - transform.position;
- //       directionDown.y -= amount;
- //       RaycastHit2D hit2 = Physics2D.Raycast((Vector2)transform.position, directionDown);
- //       if (hit2.collider != collider)
- //       {
- //           directionDown.Normalize();
- //           rb.AddForce(directionDown * speed);
- //           transform.up = (Vector2)player.transform.position - (Vector2)transform.position;
- //       }
- //       else
-	//	{
- //           NewDirection(10,collider);
-	//	}
- //   }
+ 
     void GoToSpawn()
     {
         if (Mathf.Abs(transform.position.x - spawn.x) > 0.1f ||

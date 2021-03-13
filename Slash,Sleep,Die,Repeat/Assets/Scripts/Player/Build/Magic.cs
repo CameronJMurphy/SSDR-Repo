@@ -43,7 +43,7 @@ public class Magic : MonoBehaviour
 				break;
 			case Type.shield:
 				damage = 0;
-				cooldown = 20;
+				cooldown = 17;
 				break;
 		}
 	}

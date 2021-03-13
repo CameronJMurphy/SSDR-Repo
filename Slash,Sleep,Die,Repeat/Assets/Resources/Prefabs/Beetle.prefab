@@ -174,7 +174,7 @@ MonoBehaviour:
   health: 30
   enemyProjectile: {fileID: 1062731707134148908, guid: c24d223574463a745a22b1633c5617d7,
     type: 3}
-  projectileSpeed: 500
+  projectileSpeed: 400
   attackCooldown: 1
 --- !u!1 &8830632224679188738
 GameObject:
